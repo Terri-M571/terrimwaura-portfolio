@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Resets ───────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #FFFFFF;
+  color: #0F172A;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography ─────────────────────────────────── */
+h1, h2, h3, h4, h5 {
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* ── Scroll Progress Bar ─────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: #F97316;
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ── Custom Scrollbar ────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F8FAFC; }
+::-webkit-scrollbar-thumb { background: #009EDB; border-radius: 3px; }
+
+/* ── Selection ───────────────────────────────────── */
+::selection { background: #009EDB; color: white; }
+
+/* ── Utilities ───────────────────────────────────── */
+@layer utilities {
+  .section-padding { @apply px-6 py-20 md:px-16 lg:px-24 xl:px-32; }
+  .container-max   { @apply max-w-7xl mx-auto; }
+
+  .btn-primary {
+    @apply bg-orange text-white font-semibold px-8 py-4 rounded-full
+           hover:bg-orange-hover transition-all duration-300
+           hover:shadow-orange hover:-translate-y-0.5 active:translate-y-0;
+  }
+  .btn-outline {
+    @apply border-2 border-un-blue text-un-blue font-semibold px-8 py-4 rounded-full
+           hover:bg-un-blue hover:text-white transition-all duration-300
+           hover:-translate-y-0.5;
+  }
+  .btn-outline-white {
+    @apply border-2 border-white text-white font-semibold px-8 py-4 rounded-full
+           hover:bg-white hover:text-un-blue transition-all duration-300
+           hover:-translate-y-0.5;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-card-hover;
+  }
+
+  .section-tag {
+    @apply inline-flex items-center gap-2 text-orange font-semibold text-sm tracking-widest uppercase;
+  }
+
+  .section-heading {
+    @apply font-heading font-bold text-text-primary;
+  }
+
+  /* Reveal animation classes (toggled by JS) */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+  .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-scale.visible { opacity: 1; transform: scale(1); }
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+}
+
+/* ── Masonry Grid ────────────────────────────────── */
+.masonry-grid { display: flex; margin-left: -16px; width: auto; }
+.masonry-grid-col { padding-left: 16px; background-clip: padding-box; }
+.masonry-grid-col > div { margin-bottom: 16px; }
+
+/* ── Lightbox overrides ──────────────────────────── */
+.yarl__container { background: rgba(0,0,0,0.95) !important; }
+.yarl__button { color: white !important; }
+
+/* ── Timeline ────────────────────────────────────── */
+.timeline-line {
+  position: absolute;
+  left: 24px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: #E2E8F0;
+}
+.timeline-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  background: #009EDB;
+  animation: timeline-grow 2s ease forwards;
+}
+@keyframes timeline-grow {
+  from { height: 0; }
+  to { height: 100%; }
+}
+
+/* ── Floating Animation ──────────────────────────── */
+@keyframes float-up-down {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+}
+.float-anim { animation: float-up-down 6s ease-in-out infinite; }
+
+/* ── Scroll Indicator ────────────────────────────── */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.4; }
+}
+.scroll-indicator { animation: scroll-bounce 1.8s ease-in-out infinite; }
+
+/* ── Counter Number ──────────────────────────────── */
+.counter-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+/* ── Nav underline ───────────────────────────────── */
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: #F97316;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+
+/* ── Photo overlay ───────────────────────────────── */
+.photo-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,158,219,0.85);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.photo-card:hover .photo-overlay { opacity: 1; }
+.photo-card:hover img { transform: scale(1.06); }
+
+/* ── Tool card glow ──────────────────────────────── */
+.tool-card:hover {
+  box-shadow: 0 0 0 2px #009EDB, 0 8px 32px rgba(0,158,219,0.20);
+}
+
+/* ── Publication card ────────────────────────────── */
+.pub-card { transition: all 0.3s ease; }
+.pub-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,158,219,0.15); }
+
+/* ── Video card ──────────────────────────────────── */
+.video-card .play-btn {
+  transition: all 0.3s ease;
+  opacity: 0.85;
+}
+.video-card:hover .play-btn {
+  opacity: 1;
+  transform: scale(1.12);
+}
+.video-card:hover .video-thumb { transform: scale(1.04); }
+
+/* ── Portfolio category card ─────────────────────── */
+.category-card { overflow: hidden; }
+.category-card .cat-img { transition: transform 0.5s ease; }
+.category-card:hover .cat-img { transform: scale(1.06); }
+.category-card .cat-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,30,60,0.45);
+  transition: background 0.3s ease;
+}
+.category-card:hover .cat-overlay { background: rgba(0,158,219,0.55); }
+
+/* ── Hamburger ───────────────────────────────────── */
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: white; border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
