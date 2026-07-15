@@ -66,7 +66,7 @@ export default function Home() {
       if (progressBar) {
         const scrollTop = window.scrollY
         const docH = document.documentElement.scrollHeight - window.innerHeight
-        progressBar.style.width = `${docH > 0 ? (scrollTop / docH) * 100 : 0}%`
+        progressBar.style.width = (docH > 0 ? (scrollTop / docH) * 100 : 0) + '%'
       }
       
       const sections = ['contact', 'portfolio', 'experience', 'about', 'hero']
@@ -74,7 +74,7 @@ export default function Home() {
         const el = document.getElementById(id)
         if (el && window.scrollY >= el.offsetTop - 120) {
           document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'))
-          const activeLink = document.querySelector(`.nav-link[href="#${id}"]`)
+          const activeLink = document.querySelector('.nav-link[href="#' + id + '"]')
           if (activeLink) activeLink.classList.add('active')
           break;
         }
@@ -220,7 +220,8 @@ export default function Home() {
 
   return (
     <>
-      {/* Progress Bar */}
+
+{/* Progress Bar */}
   <div id="progress-bar"></div>
 
   {/* ═══════════════════════════════════════
@@ -428,7 +429,7 @@ export default function Home() {
             {/* FilmAid Kenya */}
             <div className="tl-item">
               <div className="tl-dot">1</div>
-              <div className={`tl-card \${openTimeline === 0 ? "open" : ""}`} onClick={() => setOpenTimeline(openTimeline === 0 ? null : 0)}>
+              <div className={`tl-card ${openTimeline === 0 ? "open" : ""}`} onClick={() => setOpenTimeline(openTimeline === 0 ? null : 0)}>
                 <div className="tl-card-head">
                   <div>
                     <div className="tl-org">FilmAid Kenya</div>
@@ -455,7 +456,7 @@ export default function Home() {
             {/* International Humanity Foundation */}
             <div className="tl-item">
               <div className="tl-dot">2</div>
-              <div className={`tl-card \${openTimeline === 1 ? "open" : ""}`} onClick={() => setOpenTimeline(openTimeline === 1 ? null : 1)}>
+              <div className={`tl-card ${openTimeline === 1 ? "open" : ""}`} onClick={() => setOpenTimeline(openTimeline === 1 ? null : 1)}>
                 <div className="tl-card-head">
                   <div>
                     <div className="tl-org">International Humanity Foundation</div>
@@ -480,7 +481,7 @@ export default function Home() {
             {/* World Vision Kenya */}
             <div className="tl-item">
               <div className="tl-dot">3</div>
-              <div className={`tl-card \${openTimeline === 2 ? "open" : ""}`} onClick={() => setOpenTimeline(openTimeline === 2 ? null : 2)}>
+              <div className={`tl-card ${openTimeline === 2 ? "open" : ""}`} onClick={() => setOpenTimeline(openTimeline === 2 ? null : 2)}>
                 <div className="tl-card-head">
                   <div>
                     <div className="tl-org">World Vision Kenya</div>
@@ -506,7 +507,7 @@ export default function Home() {
             {/* World Vision East Africa */}
             <div className="tl-item">
               <div className="tl-dot">4</div>
-              <div className={`tl-card \${openTimeline === 3 ? "open" : ""}`} onClick={() => setOpenTimeline(openTimeline === 3 ? null : 3)}>
+              <div className={`tl-card ${openTimeline === 3 ? "open" : ""}`} onClick={() => setOpenTimeline(openTimeline === 3 ? null : 3)}>
                 <div className="tl-card-head">
                   <div>
                     <div className="tl-org">World Vision East Africa</div>
@@ -532,7 +533,7 @@ export default function Home() {
             {/* Plan International */}
             <div className="tl-item">
               <div className="tl-dot orange">5</div>
-              <div className={`tl-card \${openTimeline === 4 ? "open" : ""}`} onClick={() => setOpenTimeline(openTimeline === 4 ? null : 4)}>
+              <div className={`tl-card ${openTimeline === 4 ? "open" : ""}`} onClick={() => setOpenTimeline(openTimeline === 4 ? null : 4)}>
                 <div className="tl-card-head">
                   <div>
                     <div className="tl-org">Plan International MEESA</div>
@@ -668,7 +669,7 @@ export default function Home() {
       </div>
 
       {/* ── GRAPHIC DESIGN PANEL (Images only, no text/descriptions) ── */}
-      <div className={`gallery-panel \${activePanel === "graphic-design" ? "open" : ""}`} id="panel-graphic-design">
+      <div className={`gallery-panel ${activePanel === "graphic-design" ? "open" : ""}`} id="panel-graphic-design">
         <div className="panel-header">
           <div>
             <div className="section-eyebrow">Portfolio</div>
@@ -705,7 +706,7 @@ export default function Home() {
       </div>
 
       {/* ── PUBLICATIONS PANEL ── */}
-      <div className={`gallery-panel \${activePanel === "publications" ? "open" : ""}`} id="panel-publications">
+      <div className={`gallery-panel ${activePanel === "publications" ? "open" : ""}`} id="panel-publications">
         <div className="panel-header">
           <div>
             <div className="section-eyebrow">Digital Library</div>
@@ -739,7 +740,7 @@ export default function Home() {
       </div>
 
       {/* ── BRANDING PANEL (No descriptions, links to Drive) ── */}
-      <div className={`gallery-panel \${activePanel === "branding" ? "open" : ""}`} id="panel-branding">
+      <div className={`gallery-panel ${activePanel === "branding" ? "open" : ""}`} id="panel-branding">
         <div className="panel-header">
           <div>
             <div className="section-eyebrow">Portfolio</div>
@@ -777,7 +778,7 @@ export default function Home() {
       </div>
 
       {/* ── PHOTOGRAPHY PANEL (All photos, no tags/filters) ── */}
-      <div className={`gallery-panel \${activePanel === "photography" ? "open" : ""}`} id="panel-photography">
+      <div className={`gallery-panel ${activePanel === "photography" ? "open" : ""}`} id="panel-photography">
         <div className="panel-header">
           <div>
             <div className="section-eyebrow">Visual Stories</div>
@@ -829,7 +830,7 @@ export default function Home() {
       </div>
 
       {/* ── VIDEOGRAPHY PANEL (YouTube embeds & LinkedIn link) ── */}
-      <div className={`gallery-panel \${activePanel === "videography" ? "open" : ""}`} id="panel-videography">
+      <div className={`gallery-panel ${activePanel === "videography" ? "open" : ""}`} id="panel-videography">
         <div className="panel-header">
           <div>
             <div className="section-eyebrow">Portfolio</div>
