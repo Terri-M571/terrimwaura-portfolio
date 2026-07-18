@@ -1,4 +1,3 @@
-node_modules/
-.next/
-.env 
 scratch/
+.DS_Store
+Thumbs.db
